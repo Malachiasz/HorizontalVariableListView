@@ -76,6 +76,8 @@ import android.widget.WrapperListAdapter;
 @RemoteView
 public class HListView extends AbsHListView {
 
+    static final boolean DEBUG = false;
+    
 	/**
 	 * Used to indicate a no preference for a position type.
 	 */
@@ -1083,7 +1085,7 @@ public class HListView extends AbsHListView {
 
 	@Override
 	protected void onMeasure( int widthMeasureSpec, int heightMeasureSpec ) {
-		Log.i( LOG_TAG, "onMeasure" );
+		if (DEBUG) Log.i( LOG_TAG, "onMeasure" );
 		// Sets up mListPadding
 		super.onMeasure( widthMeasureSpec, heightMeasureSpec );
 
@@ -1139,7 +1141,7 @@ public class HListView extends AbsHListView {
 			widthSize = measureWidthOfChildren( heightMeasureSpec, 0, NO_POSITION, widthSize, -1 );
 		}
 		
-		Log.d( LOG_TAG, "final size: " + widthSize + "x" + heightSize );
+		if (DEBUG) Log.d( LOG_TAG, "final size: " + widthSize + "x" + heightSize );
 
 		setMeasuredDimension( widthSize, heightSize );
 		mHeightMeasureSpec = heightMeasureSpec;
@@ -1206,7 +1208,7 @@ public class HListView extends AbsHListView {
 	 */
 	final int measureWidthOfChildren( int heightMeasureSpec, int startPosition, int endPosition,
 			final int maxWidth, int disallowPartialChildPosition ) {
-		Log.i( LOG_TAG, "measureWidthOfChildren, from " + startPosition + " to " + endPosition );
+		if (DEBUG) Log.i( LOG_TAG, "measureWidthOfChildren, from " + startPosition + " to " + endPosition );
 
 		final ListAdapter adapter = mAdapter;
 		if ( adapter == null ) {
@@ -1266,7 +1268,7 @@ public class HListView extends AbsHListView {
 	}
 	
 	final int[] measureWithLargeChildren( int heightMeasureSpec, int startPosition, int endPosition, final int maxWidth, final int maxHeight, int disallowPartialChildPosition ) {
-		Log.i( LOG_TAG, "measureWithLargeChildren, from " + startPosition + " to " + endPosition );
+		if (DEBUG) Log.i( LOG_TAG, "measureWithLargeChildren, from " + startPosition + " to " + endPosition );
 
 		final ListAdapter adapter = mAdapter;
 		if ( adapter == null ) {
@@ -3340,7 +3342,7 @@ public class HListView extends AbsHListView {
 	 *           The drawable to use.
 	 */
 	public void setDivider( Drawable divider ) {
-		Log.i( LOG_TAG, "setDivider: " + divider );
+		if (DEBUG) Log.i( LOG_TAG, "setDivider: " + divider );
 		
 		if ( divider != null ) {
 			mDividerWidth = divider.getIntrinsicWidth();
@@ -3368,7 +3370,7 @@ public class HListView extends AbsHListView {
 	 *           The new height of the divider in pixels.
 	 */
 	public void setDividerWidth( int width ) {
-		Log.i( LOG_TAG, "setDividerWidth: " + width );
+		if (DEBUG) Log.i( LOG_TAG, "setDividerWidth: " + width );
 		mDividerWidth = width;
 		requestLayout();
 		invalidate();
